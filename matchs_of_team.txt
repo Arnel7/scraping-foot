@@ -1,0 +1,56 @@
+Ce script Python automatise la navigation web pour extraire les derniers résultats de matchs des équipes nationales à partir de Google, en utilisant Selenium pour le contrôle du navigateur et BeautifulSoup pour l'analyse HTML. Les dates des matchs sont formatées et comparées avec la date actuelle. Les données extraites, y compris les informations sur les équipes, les scores, et les statistiques, sont ensuite sauvegardées dans une base de données MySQL.
+
+Structure de la base de données MySQL
+La base de données MySQL requise pour ce script doit contenir les tables suivantes :
+
+# Table matches
+id (int, primary key, auto-increment)
+date_text (varchar)
+unix_timestamp (bigint)
+team_a_logo_url (varchar)
+team_a_name (varchar)
+team_a_goal (int)
+team_b_logo_url (varchar)
+team_b_name (varchar)
+team_b_goal (int)
+day (int)
+
+#Table stats
+
+id (int, primary key, auto-increment)
+match_id (int, foreign key referencing matches.id)
+team_a_short (varchar)
+team_b_short (varchar)
+team_a_shots_on_target (int)
+team_b_shots_on_target (int)
+team_a_possession (int)
+team_b_possession (int)
+team_a_passes (int)
+team_b_passes (int)
+team_a_pass_accuracy (int)
+team_b_pass_accuracy (int)
+team_a_fouls (int)
+team_b_fouls (int)
+team_a_yellow_cards (int)
+team_b_yellow_cards (int)
+team_a_red_cards (int)
+team_b_red_cards (int)
+team_a_offsides (int)
+team_b_offsides (int)
+team_a_corners (int)
+team_b_corners (int)
+team_a_goal_times (json)
+team_b_goal_times (json)
+
+
+Exigences:
+Python 3.x
+Bibliothèques Python : Selenium, BeautifulSoup, lxml, mysql-connector-python
+Navigateur Chrome avec le driver ChromeDriver installé
+Serveur MySQL avec la base de données et les tables créées comme décrit ci-dessus
+Exécution
+Assurez-vous que MySQL est en cours d'exécution et que les tables décrites sont créées.
+Installez les bibliothèques nécessaires avec pip install -r requirements.txt.
+Exécutez le script avec python script.py.
+
+Les commandes slq pour crer les tables sont dans le fichier sl.sql
